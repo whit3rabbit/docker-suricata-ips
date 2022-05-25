@@ -4,18 +4,25 @@ Prereqs
 
 * docker
 * docker-compose
-* uptables
+* iptables
 
 ## To Run
 
 ```
 docker-compose up # -d for background
+chmod +x *.sh
 ./iptables.sh
 ```
 
 ## Rules
 
 You can add rules to the "my.rules" file in the rules folder.  There is a test drop for ping'ing googles DNS server on 8.8.8.8
+Reload rules with:
+
+
+```
+./reload-rules.sh
+```
 
 ## Sources
 
