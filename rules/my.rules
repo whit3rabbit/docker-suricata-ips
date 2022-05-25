@@ -1,0 +1,1 @@
+drop icmp $HOME_NET any -> 8.8.8.8 any (msg:"DROP ICMP ping google"; classtype:not-suspicious; sid:1000000; rev:1;)

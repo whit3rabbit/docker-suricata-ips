@@ -1,0 +1,20 @@
+version: '2'
+
+services:
+
+  suricata:
+    build: ./suricata
+    container_name: suricata
+    restart: ${RESTART_MODE:-unless-stopped}
+    cap_add:
+      - NET_ADMIN
+      - SYS_NICE
+    network_mode: "host"
+    volumes:
+      - ./logs:/var/log/suricata
+      - ./rules/my.rules:/var/lib/suricata/rules/my.rules
+      - ./etc/suricata.yaml:/etc/suricata/suricata.yaml
+    env_file:
+      - ".env"
+    command: "-vvv -q $QUEUE --set suricata_name=$SENSOR_NAME"
+    entrypoint: /docker-entrypoint.sh
